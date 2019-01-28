@@ -75,6 +75,7 @@ void MainWindow::on_pushButton_Connect_clicked()
 
     qDebug() << "objSerialPort.BaudRate: " << ui->comboBox_Baudrate->currentText();
     qDebug() << "objSerialPort.PortName: " << ui->comboBox_Port->currentText();
+    qDebug() << "this->serial_connection_status: " << this->serial_connection_status;
 
     // serial port configuration
     if(ui->comboBox_Port->currentText() != "" && this->serial_connection_status == EN_SERIALPORT_DISCONNECTED)
@@ -142,6 +143,8 @@ void MainWindow::on_pushButton_Send_clicked()
 {
     QTextCursor cursor(ui->textEdit_CommandArray->textCursor());
     const QString text_string = cursor.selectedText();
+
+    qDebug() << "text_string: " << text_string;
 
     if(text_string == "")
     {
